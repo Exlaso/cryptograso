@@ -8,7 +8,10 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "CryptoGraso",
   icons: {
-    icon: "/icon.png",
+    icon: {
+      url: "/icon.png",
+      type: "image/png",
+    },
   },
   description: "Encryption/Descryption tool by Vedant Bhavsar",
 };
