@@ -191,5 +191,8 @@ const alphabet = [
     });
     return matrix;
   };
-  console.log(encrypt("exlaso", "exla"));
 //   "exlaso", "exla" zssreq
+const HillCipher = {
+  encrypt
+}
+export default HillCipher
