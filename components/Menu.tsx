@@ -23,7 +23,7 @@ const Menu = ({
       transition={{
         easings: "linear",
       }}
-      className="fixed top-0 h-1/2 bg-black w-full pt-[8vh] z-30"
+      className="absolute top-0 h-1/2 bg-black w-full pt-[10vh] z-30"
     >
       <div className="flex justify-evenly items-center gap-3 flex-col w-full  list-none h-full">
         {[
