@@ -1,113 +1,159 @@
-import Image from 'next/image'
+"use client";
+
+import { algos } from "@/lib/data";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import React from "react";
+import Image from "next/image";
+
+const Algoscard = ({
+  title,
+  href,
+  both,
+  id,
+  iscreated,
+  varients,
+  desc,
+}: {
+  title: string;
+  id: string;
+  href: string;
+  desc: string;
+  varients: any;
+  iscreated: boolean;
+  both: boolean;
+}) => (
+  <motion.div
+    id={id}
+    variants={varients}
+    whileInView={varients}
+    whileHover={{ backgroundColor: "black" }}
+    className={` p-6  rounded-md  ${!iscreated && "brightness-50"}`}
+  >
+    <Link
+      href={href}
+      onClick={(e) => {
+        if (!iscreated) {
+          e.preventDefault();
+        }
+      }}
+      className="grid gap-4"
+    >
+      <h1 className="text-xl font-bold">{title}</h1>
+      <p>{desc}</p>
+      <div className="flex gap-3 justify-start items-center flex-wrap grow">
+        <motion.span className="bg-green-500 p-1 rounded-md cursor-pointer flex gap-1 justify-center items-center">
+          <Image
+            className="invert"
+            src={"/no_encryption_FILL0_wght400_GRAD0_opsz48.svg"}
+            height={20}
+            width={20}
+            alt="Encrypt"
+          />{" "}
+          Encrypt
+        </motion.span>
+        {both && (
+          <motion.span className="bg-red-500 p-1 rounded-md cursor-pointer  flex gap-1 justify-center items-center">
+            <Image
+              className="invert"
+              src={"/enhanced_encryption_FILL0_wght400_GRAD0_opsz48.svg"}
+              height={20}
+              width={20}
+              alt="Encrypt"
+            />{" "}
+            Decrypt
+          </motion.span>
+        )}
+        {!iscreated && <p>This Algorithm is Under Development</p>}
+      </div>
+    </Link>
+  </motion.div>
+);
 
 export default function Home() {
+  const varients: any = {
+    hidden: {
+      opacity: 0,
+      x: 10,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+    },
+  };
+  const dataarr: {
+    title: string;
+    href: string;
+    iscreated: boolean;
+    desc: string;
+    enc_dec_supported: boolean;
+    short_desc: string;
+  }[] = algos();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="flex h-screen flex-col items-center justify-between p-24 max-sm:p-0">
+      <div className="grid grid-cols-2 max-lg:grid-cols-1  w-full">
+        <div className="flex justify-start py-20 gap-10 items-center flex-col h-screen">
+          <h1 className="text-6xl flex flex-wrap justify-center items-center  text-neutral-950 gradient tracking-widest font-semibold ">
+            <span>Crypto</span>
+            <span>Graso</span>
+          </h1>
+          <p className="px-14">
+            Experience ultimate data security with our encryption software.
+            Encrypt and decrypt with ease using advanced algorithms like Caesar,
+            Playfair, Vigenère, and Hill ciphers. Your data, your control.
+          </p>
+          <p className="text-right w-full px-14">
+            by:{" "}
+            <a
+              href="https://exlaso.vercel.app"
+              className="gradient underline border-b border-b-blue-600 underline-offset-4 text-right w-full"
+            >
+              Vedant Bhavsar
+            </a>
+          </p>
+          <span
+            className="lg:hidden"
+            onClick={() => {
+              const element: HTMLElement | null =
+                document.getElementById("algocard0");
+              element?.scrollIntoView();
+            }}
           >
-            By{' '}
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              className="invert"
+              src={"/arrow-down-double-fill.svg"}
+              height={50}
+              width={50}
+              alt="Arrow"
             />
-          </a>
+          </span>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.div
+          variants={varients}
+          transition={{
+            duration: 1,
+            staggerChildren: 0.3,
+          }}
+          initial={"hidden"}
+          animate={"visible"}
+          className="flex flex-col gap-3 p-3 pb-20  rounded-xl"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          {dataarr.map((data, i) => (
+            <React.Fragment key={i}>
+              <Algoscard
+                varients={varients}
+                id={`algocard${i}`}
+                iscreated={data.iscreated}
+                title={data.title}
+                desc={data.short_desc}
+                href={data.href}
+                both={data.enc_dec_supported}
+              />
+              <hr />
+            </React.Fragment>
+          ))}
+        </motion.div>
       </div>
     </main>
-  )
+  );
 }

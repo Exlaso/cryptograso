@@ -7,7 +7,9 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-
+* {
+  scroll-behavior: smooth;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -18,10 +20,31 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+  min-height: 100vh;
+  background-image: url("/BG.png");
+  background-repeat: no-repeat;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: gray;
+}
+
+.gradient {
+  padding: 0.1em;
+  /* font-size: 72px; */
+  background: -webkit-linear-gradient(0deg,#0078b4, #ab0083);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientcolor 5s forwards infinite;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 13px;
 }
