@@ -59,7 +59,7 @@ const Playfaircipher = () => {
             />
           </div>
           {encryptedstring && (
-            <h2 className="text-xl text-green-500">
+            <h2 className="text-xl text-green-500 break-all">
               Encryption = {encryptedstring}
             </h2>
           )}
