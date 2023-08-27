@@ -73,7 +73,7 @@ const CeasorCipher = () => {
             />
           </div>
           {decryptedstring && (
-            <h2 className="text-xl text-red-500">
+            <h2 className="text-xl text-red-500 break-all">
               Decryption = {decryptedstring}
             </h2>
           )}
