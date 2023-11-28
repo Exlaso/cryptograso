@@ -32,7 +32,7 @@ export const algos = () => {
       title: "VIGENERE CIPHER",
       short_desc:
         "The Vigenère cipher is a polyalphabetic substitution cipher that encrypts text by shifting letters based on a keyword, creating varied letter-to-letter relationships.",
-      href: "/VIGNERCIPHER",
+      href: "#",
       enc_dec_supported: true,
       desc: "The Vigenère cipher is a method of encrypting alphabetic text by using a simple form of polyalphabetic substitution, where each letter in the plaintext is shifted by a corresponding letter in a repeating keyword, creating a more secure encryption compared to simpler substitution ciphers.",
     },
