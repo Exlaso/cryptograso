@@ -1,8 +1,9 @@
-import { Navbar } from "@/components/navbar";
+import {Navbar} from "@/components/navbar";
 
 import "./globals.css";
 
-import type { Metadata } from "next";
+import type {Metadata} from "next";
+
 
 export const metadata: Metadata = {
   title: "Cryptograso - Encryption & Decryption tool",
@@ -14,12 +15,6 @@ export const metadata: Metadata = {
       type: "image/png",
     },
   },
-  authors: [
-    {
-      name: "Vedant Bhavsar",
-      url: "https://exlaso.in",
-    },
-  ],
   openGraph: {
     type: "website",
     locale: "en_IE",

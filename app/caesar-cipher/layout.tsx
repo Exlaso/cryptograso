@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import type { FunctionComponent } from "react";
-import type React from "react";
+import type {Metadata} from "next";
+import type React, {FunctionComponent} from "react";
+
 
 type typesforlayout = {
   children: React.ReactNode;
@@ -15,12 +15,7 @@ export const metadata: Metadata = {
       type: "image/png",
     },
   },
-  authors: [
-    {
-      name: "Vedant Bhavsar",
-      url: "https://exlaso.in",
-    },
-  ],
+
   openGraph: {
     type: "website",
     locale: "en_IE",
