@@ -3,6 +3,7 @@ import {Navbar} from "@/components/navbar";
 import "./globals.css";
 
 import type {Metadata} from "next";
+import Script from "next/script";
 
 
 export const metadata: Metadata = {
@@ -50,6 +51,7 @@ export default function RootLayout({
         <Navbar />
         {children}
       </body>
+      <Script defer src="https://analytics.vedantbhavsar.com/script.js" data-website-id="c26d034e-5fb3-40f4-817c-42d310b58a12"></Script>
     </html>
   );
 }
